@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>サイトプロキシ</title>
+</head>
+<body>
+  <h1>サイトプロキシ</h1>
+  <p>接続先サイトのパスを入力してください。</p>
+
+  <form id="form">
+    <input id="path" value="/" aria-label="パス">
+    <button type="submit">開く</button>
+  </form>
+
+  <script>
+    document.querySelector("#form").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const path = document.querySelector("#path").value.trim();
+      location.href = `/api/proxy?path=${encodeURIComponent(path || "/")}`;
+    });
+  </script>
+</body>
+</html>
